@@ -1,9 +1,14 @@
 name: Build and Deploy JSP Servlet App
 
+#on:
+#  push:
+#    branches:
+#      - mydeploy
+
 on:
   push:
-    branches:
-      - mydeploy
+    tags:
+      - 'v*.*.*'
 
 jobs:
   build-and-deploy:
