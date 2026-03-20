@@ -1,0 +1,50 @@
+name: Build and Deploy JSP Servlet App
+
+on:
+  push:
+    branches:
+      - mydeploy
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+
+      - name: Build WAR with Maven
+        run: mvn clean package -DskipTests
+
+      - name: Start SSH agent
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.DO_SSH_KEY }}
+
+      - name: Add server to known_hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -p ${{ secrets.DO_PORT }} ${{ secrets.DO_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Upload WAR to server
+        run: |
+          scp -P ${{ secrets.DO_PORT }} target/ROOT.war \
+            ${{ secrets.DO_USER }}@${{ secrets.DO_HOST }}:/tmp/ROOT.war
+
+      - name: Deploy on Tomcat server
+        run: |
+          ssh -p ${{ secrets.DO_PORT }} ${{ secrets.DO_USER }}@${{ secrets.DO_HOST }} << 'EOF'
+            sudo systemctl stop tomcat10
+            sudo rm -rf /var/lib/tomcat10/webapps/ROOT
+            sudo rm -f /var/lib/tomcat10/webapps/ROOT.war
+            sudo mv /tmp/ROOT.war /var/lib/tomcat10/webapps/ROOT.war
+            sudo chown tomcat:tomcat /var/lib/tomcat10/webapps/ROOT.war || true
+            sudo systemctl start tomcat10
+          EOF
