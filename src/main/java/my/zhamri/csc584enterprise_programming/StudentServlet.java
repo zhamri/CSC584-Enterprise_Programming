@@ -1,32 +1,27 @@
-package my.zhamri.csc584enterprise_programming;
+package com.example;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import my.zhamri.csc584enterprise_programming.Student;
 
 import java.io.IOException;
-import jakarta.servlet.*;
-import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.WebServlet;
 
 @WebServlet("/student.do")
 public class StudentServlet extends HttpServlet {
 
-    protected void doPost(HttpServletRequest request,
-                          HttpServletResponse response)
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Get form data
-        String name = request.getParameter("name");
-        String matricNo = request.getParameter("matricNo");
-        String program = request.getParameter("program");
-
-        // Create JavaBean
         Student student = new Student();
-        student.setName(name);
-        student.setMatricNo(matricNo);
-        student.setProgram(program);
+        student.setName("Zhamri");
+        student.setMatricNo("20260001");
+        student.setProgram("Enterprise Programming");
 
-        // Send to JSP
         request.setAttribute("student", student);
-
-        request.getRequestDispatcher("result.jsp")
-                .forward(request, response);
+        request.getRequestDispatcher("/student.jsp").forward(request, response);
     }
 }
