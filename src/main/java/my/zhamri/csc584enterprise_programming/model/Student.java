@@ -1,15 +1,29 @@
-package my.zhamri.csc584enterprise_programming;
+package my.zhamri.csc584enterprise_programming.model;
 
 public class Student {
-
+    private int id;
     private String name;
     private String matricNo;
     private String program;
 
-    // No-arg constructor
-    public Student() {}
+    public Student() {
+    }
 
-    // Getter & Setter
+    public Student(int id, String name, String matricNo, String program) {
+        this.id = id;
+        this.name = name;
+        this.matricNo = matricNo;
+        this.program = program;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }
