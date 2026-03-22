@@ -9,8 +9,6 @@
 </h1>
 <h3><%= new java.util.Date()%></h3>
 <br/>
-<a href="hello">Hello World Servlet</a>
-<br>
-<a href="hello-servlet">Hello Servlet</a>
+<a href="/csc584/main.html">Go to /csc584/main.html</a>
 </body>
 </html>
