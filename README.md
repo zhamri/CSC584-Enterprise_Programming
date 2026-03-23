@@ -1,44 +1,9 @@
-# CSC584-Enterprise_Programming
+## Why this is VERY useful
 
-## Project Structure
-```
-supabase-student-crud/
-│
-├── .env                     ❌ (NOT shared with others)
-├── .gitignore
-├── pom.xml
-│
-├── src/
-│   └── main/
-│
-│       ├── java/
-│       │   └── com/
-│       │       └── example/
-│       │
-│       │           ├── model/
-│       │           │   └── Student.java
-│       │
-│       │           ├── dao/
-│       │           │   └── StudentDAO.java
-│       │
-│       │           ├── controller/
-│       │           │   └── StudentServlet.java
-│       │
-│       │           └── util/
-│       │               └── DBUtil.java
-│
-│       ├── resources/
-│       │   └── (optional config files)
-│
-│       └── webapp/
-│           ├── index.jsp
-│           │
-│           ├── views/
-│           │   ├── student-list.jsp
-│           │   └── student-form.jsp
-│           │
-│           └── WEB-INF/
-│               └── web.xml   (optional)
-│
-└── target/
-```
+ Issue              | Result              |
+| ------------------ | ------------------- |
+| Env not set        | shows NULL          |
+| Driver missing     | ClassNotFound error |
+| Wrong password     | connection error    |
+| DB empty           | table shows no rows |
+| Everything correct | data displayed      |
