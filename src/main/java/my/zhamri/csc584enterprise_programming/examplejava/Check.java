@@ -13,7 +13,7 @@ public class Check {
             Class.forName("com.mysql.cj.jdbc.Driver");
             // Establish connection
             connection = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/sttpk2023db", "root", ""
+                    "jdbc:mysql://localhost:3306/csc584db", "root", ""
             );
             // Create statement
             Statement statement = connection.createStatement();

@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class StudentCRUD {
 
     // Database URL
-    static final String URL = "jdbc:mysql://localhost:3306/sttpk2023db";
+    static final String URL = "jdbc:mysql://localhost:3306/csc584db";
 
     // MySQL username
     static final String USER = "root";
