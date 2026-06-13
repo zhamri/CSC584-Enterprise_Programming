@@ -50,5 +50,14 @@ mysql> select * from users;
 2 rows in set (0.001 sec)
 ```
 
+## Add dependency in `pom.xml`
+```xml
+<dependency>
+    <groupId>com.mysql</groupId>
+    <artifactId>mysql-connector-j</artifactId>
+    <version>9.7.0</version>
+    <scope>compile</scope>
+</dependency>
+```
 
 
