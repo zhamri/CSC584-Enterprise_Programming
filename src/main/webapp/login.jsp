@@ -28,5 +28,19 @@
 
 </form>
 
+<%
+  String error = request.getParameter("error");
+
+  if(error != null){
+%>
+
+<p style="color:red;">
+  Invalid username or password. Please try again.
+</p>
+
+<%
+  }
+%>
+
 </body>
 </html>

@@ -45,8 +45,7 @@ public class LoginServlet extends HttpServlet {
 
             } else {
 
-                response.getWriter().println("<h3>Invalid Login</h3>");
-
+                response.sendRedirect("login.jsp?error=1");
             }
 
             rs.close();
