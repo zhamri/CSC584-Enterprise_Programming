@@ -382,3 +382,6 @@ Expected result:
 Redirect to login.jsp
 ```
 
+## Advanced Approach `Bcrypt`
+
+1. https://bcrypt-generator.com/
